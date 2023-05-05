@@ -1,4 +1,5 @@
 import Component from '../model/Component.model.js'
+import Category from '../model/Category.js'
 
 
 export async function createComponent(req, res){
@@ -11,8 +12,18 @@ export async function createComponent(req, res){
     }
 }
 
+export async function createCategory(req, res){
+    const category =  Category(req.body)
+    const newCategory = await category.save()
+    if(newCategory){
+        return res.status(201).send({message:"Save successfully"});
+    }else{
+        return res.status(500).send({message:"Cannot save category"})
+    }
+}
+
 export async function findComponent(req, res){
-    const component = await Component.find();
+    const component = await Component.find().populate({path:'categoryId'});
     if(component){
         return res.status(201).send({component});
     }else{

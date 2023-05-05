@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import {mongoose, Schema} from "mongoose";
 
 
 export const ComponentSchema = new mongoose.Schema({
@@ -13,7 +13,8 @@ export const ComponentSchema = new mongoose.Schema({
     linea:{type: String},
     descripcion:{type: String,
     trim:true
-    }
+    },
+    categoryId:{type: mongoose.Schema.ObjectId, ref:'Category_colection'}
 },{
     timestamps:true,
     versionKey: false

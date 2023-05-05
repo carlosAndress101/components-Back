@@ -6,6 +6,7 @@ const router = Router();
 
 /**Post methods*/
 router.route('/newComponents').post(controller.createComponent)
+router.route('/newCategory').post(controller.createCategory)
 
 /**Get methods*/
 router.route('/components').get(controller.findComponent)
