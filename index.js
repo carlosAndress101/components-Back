@@ -6,7 +6,7 @@ require('./src/database/db.js')
 
 
 const app = express();
-const port = PORT || 1500;
+const port = PORT || 3000;
 
 
 /**Middlewares */
