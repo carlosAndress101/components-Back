@@ -1,6 +1,8 @@
-import { config } from "dotenv";
+const {config} = require('dotenv')
 
-config()
+config();
 
-export const PORT = process.env.PORT
-export const MONGO_URI = process.env.MONGO_URI
+const PORT = process.env.PORT
+const MONGO_URI = process.env.MONGO_URI
+
+module.exports = {PORT, MONGO_URI}

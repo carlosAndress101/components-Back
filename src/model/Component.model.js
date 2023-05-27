@@ -1,7 +1,6 @@
-import {mongoose, Schema} from "mongoose";
+const mongoose = require('mongoose');
 
-
-export const ComponentSchema = new mongoose.Schema({
+const ComponentSchema = new mongoose.Schema({
     name:{type: String,
     required: [true, "Please indicate the name of the component"],
     trim:true
@@ -20,4 +19,4 @@ export const ComponentSchema = new mongoose.Schema({
     versionKey: false
 });
 
-export default mongoose.model.Component || mongoose.model('Component', ComponentSchema);
+module.exports = mongoose.model.Component || mongoose.model('Component', ComponentSchema);

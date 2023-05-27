@@ -1,12 +1,12 @@
-import express from "express";
-import router from './routes/routes.js'
-import morgan from "morgan";
-import { PORT } from './middleware/config.js'
-import './database/db.js'
+const express = require("express");
+const router = require("./src/routes/routes");
+const { PORT } = require("./src/middleware/config");
+require('./src/database/db.js')
+
+
 
 const app = express();
-app.use(morgan('dev'));
-const PORTT = process.env.PORT || 1500;
+const port = PORT || 1500;
 
 
 /**Middlewares */
@@ -25,8 +25,14 @@ app.use((req,res,next)=>{
 /**api routes */
 app.use('/api', router);
 
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+});
+
 
 /**start server only when we hace valid connection */
-app.listen(PORT, () => {
-    console.log(`Server on port ${PORTT}`)
+app.listen(port, () => {
+    console.log(`Server on port ${port}`)
 })
+
+module.exports = app;

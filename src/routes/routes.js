@@ -1,21 +1,22 @@
-import { Router } from 'express';
-import * as controller from "../controllers/appController.js"
+const express = require("express")
+const appController = require("../controllers/appController.js")
 
-const router = Router();
+const router = express.Router();
 
 
 /**Post methods*/
-router.route('/newComponents').post(controller.createComponent)
-router.route('/newCategory').post(controller.createCategory)
+router.post('/newComponents', appController.createComponent)
+router.post('/newCategory', appController.createCategory)
 
 /**Get methods*/
-router.route('/components').get(controller.findComponent)
-router.route('/components/:id').get(controller.findOneComponent)
+router.get('/components', appController.findComponent)
+router.get('/components/:id', appController.findOneComponent)
 
 /**Patch methods*/
-router.route('/components/:id').put(controller.updateComponent)
+router.put('/components/:id', appController.updateComponent)
 
 /**Delete methods*/
-router.route('/components/:id').delete(controller.deleteComponent)
+router.delete('/components/:id', appController.deleteComponent)
 
-export default router
+
+module.exports = router;

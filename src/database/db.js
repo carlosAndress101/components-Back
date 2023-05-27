@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import {MONGO_URI} from "../middleware/config.js";
+const mongoose = require('mongoose');
+const {MONGO_URI} = require('../middleware/config.js');
 
 (async () => {
     try {

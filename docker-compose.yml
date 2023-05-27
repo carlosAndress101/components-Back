@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  componentmanager:
+    build:
+      context: ./
+    container_name: componentmanager-back
+    ports:
+      - "4000:1500"

@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
-export const CategorySchema = new mongoose.Schema(
+const CategorySchema = new mongoose.Schema(
   {
     descripcion: {
       type: String,
@@ -13,5 +13,4 @@ export const CategorySchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model.Category ||
-  mongoose.model("Category_colection", CategorySchema);
+module.exports = mongoose.model.Category || mongoose.model("Category_colection", CategorySchema);

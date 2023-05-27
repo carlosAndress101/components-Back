@@ -1,8 +1,8 @@
-import Component from '../model/Component.model.js'
-import Category from '../model/Category.js'
+const Component = require('../model/Component.model.js')
+const Category = require('../model/Category.js')
 
 
-export async function createComponent(req, res){
+async function createComponent(req, res){
     const component =  Component(req.body)
     const newComponent = await component.save();
     if(newComponent){
@@ -12,7 +12,7 @@ export async function createComponent(req, res){
     }
 }
 
-export async function createCategory(req, res){
+async function createCategory(req, res){
     const category =  Category(req.body)
     const newCategory = await category.save()
     if(newCategory){
@@ -22,7 +22,7 @@ export async function createCategory(req, res){
     }
 }
 
-export async function findComponent(req, res){
+async function findComponent(req, res){
     const component = await Component.find().populate({path:'categoryId'});
     if(component){
         return res.status(201).send({component});
@@ -31,7 +31,7 @@ export async function findComponent(req, res){
     }
 }
 
-export async function findOneComponent(req, res){
+async function findOneComponent(req, res){
     try {
     const component = await Component.findById(req.params.id);
     if(component) return res.status(201).send({component});
@@ -41,7 +41,7 @@ export async function findOneComponent(req, res){
     }
 }
 
-export async function updateComponent(req, res){
+async function updateComponent(req, res){
     try {
         const {name, color, estado, modelo, marca, linea, descripcion} = req.body
         const component = await Component.findByIdAndUpdate(req.params.id, {name, color, estado, modelo, marca, linea, descripcion}, {new:true});
@@ -52,7 +52,7 @@ export async function updateComponent(req, res){
     }
 }
 
-export async function deleteComponent(req, res){
+async function deleteComponent(req, res){
     try {
         const component = await Component.findByIdAndDelete(req.params.id);
         if(component){
@@ -62,6 +62,8 @@ export async function deleteComponent(req, res){
         return res.status(500).json({ message: error.message });
     }
 }
+
+module.exports = {deleteComponent, updateComponent, findComponent, findOneComponent, createCategory, createComponent}
 
 
 
